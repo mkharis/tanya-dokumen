@@ -1,0 +1,33 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "tanya-dokumen"
+version = "0.1.0"
+description = "RAG chatbot that answers questions from PDF documents with source citations"
+requires-python = ">=3.12"
+dependencies = [
+    "langchain",
+    "langchain-community",
+    "langchain-openai",
+    "langchain-text-splitters",
+    "langchain-chroma",
+    "langchain-huggingface",
+    "sentence-transformers",
+    "pypdf",
+    "fastapi",
+    "uvicorn[standard]",
+    "streamlit",
+    "requests",
+    "python-dotenv",
+]
+
+[dependency-groups]
+dev = ["pytest"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src", "api", "app"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
